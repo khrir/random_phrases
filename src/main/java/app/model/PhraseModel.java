@@ -2,28 +2,39 @@ package app.model;
 
 public class PhraseModel {
     private int id;
-    private String description;
+    private String title;
+    private String phrase;
     
     public PhraseModel(){}
 
-    public PhraseModel(int id, String description){
+    public PhraseModel(int id, String title, String phrase){
+        super();
         this.id = id;
-        this.description = description;
+        this.title = title;
+        this.phrase = phrase;
     }
 
     public int getId(){
         return id;
     }
 
-    public String getDescription(){
-        return description;
+    public String getTitle(){
+        return title;
+    }
+
+    public String getPhrase(){
+        return phrase;
     }
 
     public int setId(int id){
         return this.id = id;
     }
 
-    public String setDescription(String description){
-        return this.description = description;
+    public String setTitle(String title){
+        return this.title = title;
+    }
+
+    public String setPhrase(String phrase){
+        return this.phrase = phrase;
     }
 }
