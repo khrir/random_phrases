@@ -1,0 +1,4 @@
+app/model/PhraseModel.class
+META-INF/services/io.jooby.MvcFactory
+app/App.class
+app/Controllers/IndexController$Module.class

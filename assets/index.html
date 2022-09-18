@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <link href="assets/css/index_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/css/form_style.css">
+    <link rel="stylesheet" href="assets/css/card_style.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="crossorigin="anonymous"
           referrerpolicy="no-referrer" />
   </head>
   <body>
-    <aside id="sidebar">
+    <aside id="sidebar" class="sidebar">
       <div class="logo">
         <img src="assets/img/picapau.png" alt="Pica Pau biruta">
         <h2>Random Phrases</h2>
@@ -25,7 +27,7 @@
           <li>
             <i class="fas fa-solid fa-plus op"></i>
             <a href="#" class="link"
-              onclick="">Inserir nova frase</a>
+              onclick="renderForm()">Inserir nova frase</a>
           </li>
           <li>
             <i class="fas fa-solid fa-pen-to-square op"></i>
@@ -35,7 +37,7 @@
           <li>
             <i class="fas fa-solid fa-eye op"></i>
             <a href="#" class="link"
-              onclick="">Consultar frase aleatória</a>
+              onclick="renderCard()">Consultar frase aleatória</a>
           </li>
         </ul>
       </div>
@@ -48,6 +50,7 @@
 
       </div>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
