@@ -13,6 +13,11 @@ function renderForm(){
     $('#content').html(form)
 }
 
+function reload(){
+    let div = $('<div></div>')
+    $('#content').html(div)
+}
+
 function renderCard(){       
     let container = $('<div class="Container_card">')
     let card = $('<div class="card_vanilla">')
@@ -22,24 +27,4 @@ function renderCard(){
     $(content).appendTo(card);
 
     $('#content').html(container)
-}
-
-const sidebar = document.getElementById('sidebar');
-const main = document.getElementById('main-content');
-
-var w = window.innerWidth;
-
-window.addEventListener('resize', () => {
-    w = window.innerWidth;
-});
-
-function reconfigurar() {
-    if (sidebar.style.display == 'none') {
-        sidebar.style.display = 'block';
-        main.style.width = 'calc(100% - 300px)';
-    }
-    else {
-        sidebar.style.display = 'none';
-        main.style.width = '100%';
-    }
 }
