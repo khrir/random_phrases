@@ -1,2 +1,2 @@
 META-INF/services/io.jooby.MvcFactory
-app/Controllers/IndexController$Module.class
+app/Controllers/PhraseController$Module.class
