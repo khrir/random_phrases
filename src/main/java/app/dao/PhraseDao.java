@@ -14,13 +14,25 @@ import java.util.logging.Logger;
 
 public class PhraseDao {
     private Connection connection;
-    
-    public PhraseDao() {
+    private PhraseModel phrase;
+
+    public PhraseDao(PhraseModel phraseModel) {
         try {
             String url = "jdbc:sqlite:DriverBD/banco_sqlite.db";
             this.connection = DriverManager.getConnection(url);
+            this.phrase = phraseModel;
         } catch(SQLException e){
             System.err.println("\nNao foi possivel conectar ao banco.\n" + e.getMessage());
+        }
+    }
+
+    public void createTable() throws SQLException {
+        String sql = "CREATE TABLE phrases (id int NOT NULL, title varchar(50) NOT NULL, phrase varchar(100), constraint phrase_pk primary key (id));";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PhraseDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -32,7 +44,7 @@ public class PhraseDao {
             stmt.setInt(1, id);
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
-                PhraseModel phrase = new PhraseModel();
+                phrase = new PhraseModel();
                 phrase.setId(resultado.getInt("id"));
                 phrase.setTitle(resultado.getString("title"));
                 phrase.setPhrase(resultado.getString("phrase"));

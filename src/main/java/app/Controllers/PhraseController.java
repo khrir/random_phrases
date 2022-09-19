@@ -12,8 +12,18 @@ public class PhraseController {
     return Paths.get("assets/index.html");
   }
 
-  @POST
-  public String store(){
-    return "POST";
-  }
+  // @POST
+  // public Result store(PhraseModel phraseModel){
+  //   // phraseDao.inserir(phraseModel);
+  //   return new PhraseDao(phraseModel);
+  // }
 }
+
+// public class Controller {
+
+//   @POST
+//   @Path("/save")
+//   public Result submit(Contact contact) {
+//     ...
+//   }
+// }
