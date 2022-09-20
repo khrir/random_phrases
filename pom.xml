@@ -60,9 +60,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.jooby</groupId>
-      <artifactId>jooby-jdbc</artifactId>
-      <version>1.6.6</version>
+      <groupId>io.jooby</groupId>
+      <artifactId>jooby-hikari</artifactId>
+      <version>2.16.1</version>
     </dependency>
 
     <dependency>
@@ -71,10 +71,23 @@
     </dependency>
 
     <dependency>
-      <groupId>org.jooby</groupId>
-      <artifactId>jooby-jdbi3</artifactId>
-      <version>1.6.6</version>
+      <groupId>io.jooby</groupId>
+      <artifactId>jooby-jdbi</artifactId>
+      <version>2.16.1</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>org.jdbi</groupId>
+      <artifactId>jdbi3-sqlobject</artifactId>
+      <version>3.32.0</version>
+    </dependency>
+
+    <dependency>
+  <groupId>io.jooby</groupId>
+  <artifactId>jooby-jackson</artifactId>
+  <version>2.16.1</version>
+</dependency>
 
     <dependency>
       <groupId>mysql</groupId>

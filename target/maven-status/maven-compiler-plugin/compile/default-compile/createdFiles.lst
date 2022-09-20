@@ -1,2 +1,10 @@
+app/Controllers/IndexView$Module.class
+app/dao/PhraseRepo.class
+app/model/PhraseModel.class
+app/Controllers/PhraseView$Module.class
 META-INF/services/io.jooby.MvcFactory
-app/Controllers/PhraseController$Module.class
+app/App.class
+app/model/PhraseModel$Mapper.class
+app/Controllers/PhraseView.class
+app/dao/PhraseDao.class
+app/Controllers/IndexView.class
