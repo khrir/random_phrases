@@ -18,13 +18,28 @@ function reload(){
     $('#content').html(div)
 }
 
-function renderCard(){       
-    let container = $('<div class="Container_card">')
-    let card = $('<div class="card_vanilla">')
-    let content = $('<div class="content_card"><h2 id="card_id">01</h2><h3 id="card_title">Verso 1</h3><p id="card_phrase">Lembro com muita saudade daquele bailinho.</p></div>')
+async function renderCard(){
+    let id = gerarRandomNumber()
+    await fetch("http://localhost:8080/phrase/"+id, {
+        method: 'get',
+    }).then(function (result) {
+        return result.json()
+    }).then(function (data) {
+        console.log(data)
+        let container = $('<div class="Container_card">')
+        let card = $('<div class="card_vanilla">')
+        let content = $('<div class="content_card"><h2 id="card_id">0'+ data.id +'</h2><h3 id="card_title">'+ data.title +'</h3><p id="card_phrase">'+ data.phrase +'</p></div>')
+        $(card).appendTo(container);
+        $(content).appendTo(card);
 
-    $(card).appendTo(container);
-    $(content).appendTo(card);
+        $('#content').html(container)
+    })
+}
 
-    $('#content').html(container)
+function gerarRandomNumber(){
+    let num = parseInt((Math.random() * 7))
+    if (num == 0){
+        num = gerarRandomNumber()
+    }
+    return num
 }
