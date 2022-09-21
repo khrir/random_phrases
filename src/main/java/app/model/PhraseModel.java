@@ -22,13 +22,11 @@ public class PhraseModel {
     }
 
     public PhraseModel(String title, String phrase) {
-        super();
         this.title = title;
         this.phrase = phrase;
     }
 
     public PhraseModel(int id, String title, String phrase) {
-        super();
         this.id = id;
         this.title = title;
         this.phrase = phrase;

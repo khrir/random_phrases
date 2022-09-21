@@ -24,7 +24,7 @@ public interface PhraseRepo {
 
   @SqlUpdate("insert into phrases(title, phrase) values(:title, :phrase)")
   @GetGeneratedKeys
-  long insert(@BindBean PhraseModel phrase);
+  boolean insert(@BindBean PhraseModel phrase);
 
   @SqlUpdate("update phrases set title=:title,phrase=:phrase where id=:id")
   boolean update(@BindBean PhraseModel phrase);

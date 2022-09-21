@@ -29,25 +29,7 @@ public class App extends Jooby {
     install(new JdbiModule().sqlObjects(PhraseRepo.class));
     decorator(new TransactionalRequest());
 
-    // accessing to the data source
-    // get("/bd", req -> {
-    //   DataSource db = require(DataSource.class);
-    //   // do something with datasource
-    // }); 
-
-    mvc(new PhraseView());
-
-    post( "/", req -> {
-      PhraseModel phraseModel = req.form(PhraseModel.class);
-      // phraseDao.inserir(phraseModel);
-      System.out.println(phraseModel.getId());
-      System.out.println(phraseModel.getTitle());
-      System.out.println(phraseModel.getPhrase());
-
-      return true;
-    });
-    
-    onStarting(() -> {
+    onStarted(() -> {
       Jdbi jdbi = require(Jdbi.class);
       jdbi.useHandle(h -> {
         h.createUpdate("create table phrases (id int auto_increment, title varchar(255), phrase varchar(255))")
@@ -57,6 +39,22 @@ public class App extends Jooby {
         repo.insert(new PhraseModel("Lala", " LuLaLa"));
       });
     });
+
+    post( "/", req -> {
+      Jdbi jdbi = require(Jdbi.class);
+      PhraseModel phraseModel = req.form(PhraseModel.class);
+      String title = phraseModel.getTitle();
+      String phrase = phraseModel.getPhrase();
+
+      jdbi.useHandle(h -> {
+        PhraseRepo repo = h.attach(PhraseRepo.class);
+        repo.insert(new PhraseModel(title, phrase));
+      });
+      return true;
+    });
+
+    mvc(new PhraseView());
+
   }
 
   public static void main(final String[] args) {

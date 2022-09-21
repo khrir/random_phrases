@@ -5,10 +5,16 @@ import app.model.PhraseModel;
 import io.jooby.Context;
 import io.jooby.annotations.*;
 
-@Path("/phrase/{id}")
+@Path("/phrase")
 @Transactional
 public class PhraseView {
 
+  @GET
+  public String render(){
+    return "OPa";
+  }
+
+  @Path("/{id}")
   @GET
   public PhraseModel store(Context context, @PathParam int id){
     PhraseRepo repo =  context.require(PhraseRepo.class);

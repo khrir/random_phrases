@@ -6,5 +6,4 @@ META-INF/services/io.jooby.MvcFactory
 app/App.class
 app/model/PhraseModel$Mapper.class
 app/Controllers/PhraseView.class
-app/dao/PhraseDao.class
 app/Controllers/IndexView.class
