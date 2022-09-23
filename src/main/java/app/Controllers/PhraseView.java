@@ -7,18 +7,17 @@ import app.model.PhraseModel;
 import io.jooby.Context;
 import io.jooby.annotations.*;
 
-@Path("/phrase")
 @Transactional
-public class PhraseView {
+public class PhraseView{
 
-  @Path("/all")
+  @Path("/phrase/all")
   @GET
   public List<PhraseModel> renderAllPhrases(Context context){
     PhraseRepo repo =  context.require(PhraseRepo.class);
     return repo.list(0, 10);
   }
 
-  @Path("/{id}")
+  @Path("/phrase/{id}")
   @GET
   public PhraseModel store(Context context, @PathParam int id){
     PhraseRepo repo =  context.require(PhraseRepo.class);
@@ -27,11 +26,15 @@ public class PhraseView {
   }
 }
 
-// public class Controller {
-
+// @Path("/update")
 //   @POST
-//   @Path("/save")
-//   public Result submit(Contact contact) {
-//     ...
-//   }
-// }
+//   public PhraseModel create(Context context){
+//     Jdbi jdbi = require(Jdbi.class);
+//     PhraseModel result = context.body(PhraseModel.class);
+
+//     jdbi.useHandle(h -> {
+//       PhraseRepo repo = h.attach(PhraseRepo.class);
+//       repo.update(result);
+//     });
+//     return StatusCode.OK;
+//   };
