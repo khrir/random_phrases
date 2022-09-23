@@ -13,6 +13,7 @@ import app.dao.PhraseRepo;
 // import app.dao.PhraseDao;
 import app.model.PhraseModel;
 import io.jooby.Jooby;
+import io.jooby.StatusCode;
 import io.jooby.hikari.HikariModule;
 import io.jooby.jdbi.JdbiModule;
 import io.jooby.jdbi.TransactionalRequest;
@@ -42,15 +43,15 @@ public class App extends Jooby {
 
     post( "/", req -> {
       Jdbi jdbi = require(Jdbi.class);
-      PhraseModel phraseModel = req.form(PhraseModel.class);
-      String title = phraseModel.getTitle();
-      String phrase = phraseModel.getPhrase();
+      PhraseModel result = req.body(PhraseModel.class);
+      String title = result.getTitle();
+      String phrase = result.getPhrase();
 
       jdbi.useHandle(h -> {
         PhraseRepo repo = h.attach(PhraseRepo.class);
         repo.insert(new PhraseModel(title, phrase));
       });
-      return true;
+      return StatusCode.OK;
     });
 
     mvc(new PhraseView());

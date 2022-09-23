@@ -11,7 +11,7 @@ public class PhraseView {
 
   @GET
   public String render(){
-    return "OPa";
+    return "Opa";
   }
 
   @Path("/{id}")
