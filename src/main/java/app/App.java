@@ -4,8 +4,6 @@ import java.nio.file.Paths;
 
 import org.jdbi.v3.core.Jdbi;
 
-import com.mysql.cj.protocol.x.ReusableOutputStream;
-
 import app.Controllers.IndexView;
 import app.Controllers.PhraseView;
 import app.dao.PhraseRepo;

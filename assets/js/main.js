@@ -114,7 +114,7 @@ function deletePhrase(e){
     e.preventDefault()
 
     let id = document.getElementById('id').value;
-    axios.post('http://localhost:8080/delete', id)
+    axios.post('http://localhost:8080/delete', {id})
         .then(function (response) {
             if(response.status === 200){
                 window.location.assign('/')
