@@ -3,6 +3,7 @@ app/dao/PhraseRepo.class
 app/model/PhraseModel.class
 app/Controllers/PhraseView$Module.class
 META-INF/services/io.jooby.MvcFactory
+app/App.class
 app/model/PhraseModel$Mapper.class
 app/Controllers/PhraseView.class
 app/Controllers/IndexView.class

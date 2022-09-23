@@ -19,16 +19,16 @@ function reload() {
 }
 
 async function renderCard() {
-    let id = gerarRandomNumber()
-    await fetch("http://localhost:8080/phrase/" + id, {
+    
+    await fetch("http://localhost:8080/phrase/all", {
         method: 'get',
     }).then(function (result) {
         return result.json()
     }).then(function (data) {
-        console.log(data)
+        let index = gerarRandomNumber(data.length)
         let container = $('<div class="Container_card">')
         let card = $('<div class="card_vanilla">')
-        let content = $('<div class="content_card"><h2 id="card_id">0' + data.id + '</h2><h3 id="card_title">' + data.title + '</h3><p id="card_phrase">' + data.phrase + '</p></div>')
+        let content = $('<div class="content_card"><h2 id="card_id">0' + data[index].id + '</h2><h3 id="card_title">' + data[index].title + '</h3><p id="card_phrase">' + data[index].phrase + '</p></div>')
         $(card).appendTo(container);
         $(content).appendTo(card);
 
@@ -36,25 +36,19 @@ async function renderCard() {
     })
 }
 
-function gerarRandomNumber() {
-    let num = parseInt((Math.random() * 7))
-    if (num == 0) {
-        num = gerarRandomNumber()
-    }
+function gerarRandomNumber(length) {
+    let num = parseInt((Math.random()) * length)
     return num
 }
 
-function sendPhrase(e){
+function sendPhrase(e) {
     e.preventDefault()
     let title = document.getElementById('title').value;
     let phrase = document.getElementById('phrase').value;
-    // let phraseModel = {title: title, phrase: phrase}
 
-    axios.post('http://localhost:8080/', {title, phrase})
+    axios.post('http://localhost:8080/', { title, phrase })
         .then(function (response) {
-            console.log(response)
             if (response.status === 200) {
-                // alert('O pai tá on');
                 window.location.assign('/');
             }
         })

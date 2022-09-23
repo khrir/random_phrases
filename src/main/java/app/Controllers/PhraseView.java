@@ -1,5 +1,7 @@
 package app.Controllers;
 
+import java.util.List;
+
 import app.dao.PhraseRepo;
 import app.model.PhraseModel;
 import io.jooby.Context;
@@ -9,9 +11,11 @@ import io.jooby.annotations.*;
 @Transactional
 public class PhraseView {
 
+  @Path("/all")
   @GET
-  public String render(){
-    return "Opa";
+  public List<PhraseModel> renderAllPhrases(Context context){
+    PhraseRepo repo =  context.require(PhraseRepo.class);
+    return repo.list(0, 10);
   }
 
   @Path("/{id}")
